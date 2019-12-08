@@ -70,12 +70,12 @@ def led_movies(all_movies):
     count = 0
     for i in range(len(all_movies)):   # Using the for loop with constant i
         if all_movies[i][3] == "y":
-            count += 1   # If the movie is learned, count + 1
+            count += 1   # If the movie is watched, count + 1
             symbol = "*"   # Add * symbol beside the watched movies list
         else:
             symbol = " "
         print(" ", str(i) + ".", symbol, "", end="")
-        for k in range(len(all_movies[i]) - 2):   # Using the for loop to add the dash before the artist
+        for k in range(len(all_movies[i]) - 2):   # Using the for loop to add the dash before the director
             if k == 1:
                 dash = "-"   # If there is a director, add the dash
             else:
@@ -93,7 +93,7 @@ def led_movies(all_movies):
         print("You have already watched", all_movies[movie_number][0])
     else:
         all_movies[movie_number][3] = "n"
-        print(all_movies[movie_number][0], "by", all_movies[movie_number][1], "learned")   # Print which movie has been watched
+        print(all_movies[movie_number][0], "by", all_movies[movie_number][1], "watched")   # Print which movie has been watched
         return all_movies
 
 
