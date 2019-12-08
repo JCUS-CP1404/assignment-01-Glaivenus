@@ -60,8 +60,8 @@ def list_movies(all_movies):
                 dash = "-"   # If there is a director, add the dash
             else:
                 dash = ""   # Else add the blank
-            print(dash, "{:30}".format(all_movies[i][k]), end=" ")    # Printing format
-        print("({:4})".format(all_movies[i][-2]))
+            print(dash, "{:30}".format(all_movies[i][k]), end=" ")
+        print("({:4})",format(all_movies[i][-2]))
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
 
 
@@ -147,7 +147,7 @@ def count_number_year(choice):
             print("Invalid input；enter a valid number")
 
 
-def save_to_file(all_movies):   i# This function is used to write the movie list to the csv file
+def save_to_file(all_movies):   # This function is used to write the movie list to the csv file
     final_save = open("movies.csv", 'w')
     for i in range(len(all_movies)):   # Using the for loop and declare variable
         if i != 0:
