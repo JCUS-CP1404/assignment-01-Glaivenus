@@ -12,7 +12,8 @@ W - Watch a movie
 Q - Quit
 """
 
-def main():   # This function involves the printing Menu and the choice
+def main():
+    # This function involves the printing Menu and the choice
     print("Movies To Watch 1.0 - by Tao Kexin")
     print(MENU)
     choice = input(">>> ").upper()
@@ -24,7 +25,8 @@ def main():   # This function involves the printing Menu and the choice
             all_movies.append(add_movies())
         elif choice == "W":
             led_movies(all_movies)
-        else:   # If user enter other word, it will display the invalid message
+        else:
+            # If user enter other word, it will display the invalid message
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper()
@@ -32,7 +34,8 @@ def main():   # This function involves the printing Menu and the choice
     print(len(all_movies), "movies saved to", 'movies.csv', "\nHave a nice day :)")
 
 
-def load_movies():   # This function is used for open the csv file and put the data to the list
+def load_movies():
+    # This function is used for open the csv file and put the data to the list
     all_movies = []   # Create a list for saving movies data
     movies_file = open('movies.csv', 'r')   # Open the csv file with 'r' read module
     for line in movies_file:
@@ -42,7 +45,8 @@ def load_movies():   # This function is used for open the csv file and put the d
     movies_file.close()
     return all_movies
 
-def list_movies(all_movies):   # This function is used to display the movies list
+def list_movies(all_movies):
+    # This function is used to display the movies list
     count = 0
     for i in range(len(all_movies)):   # Using the for loop with constant i
         if all_movies[i][3] == "y":
@@ -61,7 +65,8 @@ def list_movies(all_movies):   # This function is used to display the movies lis
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
 
 
-def led_movies(all_movies):   # This function is used to mark the movies as watched
+def led_movies(all_movies):
+    # This function is used to mark the movies as watched
     count = 0
     for i in range(len(all_movies)):   # Using the for loop with constant i
         if all_movies[i][3] == "y":
@@ -81,8 +86,10 @@ def led_movies(all_movies):   # This function is used to mark the movies as watc
         print("No more movies to watch! Please kindly enter 2 and Q to Quit")
 
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
-    movie_number = count_number("Enter the number of movie that you want to watch\n>>> ")   # Asking which number of movie that user want to watch
-    if all_movies[movie_number][3] == "n":  # If there is "n" in forth position in csv file, it show the duplicate message
+    movie_number = count_number("Enter the number of movie that you want to watch\n>>> ")
+    # Asking which number of movie that user want to watch
+    if all_movies[movie_number][3] == "n":
+        # If there is "n" in forth position in csv file, it show the duplicate message
         print("You have already watched", all_movies[movie_number][0])
     else:
         all_movies[movie_number][3] = "n"
@@ -104,7 +111,8 @@ def count_number(choice):
         except ValueError:   # except the error
             print("Invalid input; enter a valid number")
 
-def add_movies():   # This function is used for adding new movie
+def add_movies():
+    # This function is used for adding new movie
     new_movie = []   # Create a list to save the new movie detail
     movie_title = word_input("Title: ")   # Ask for the title
     Director = word_input("Director: ")   # Ask for the director
@@ -117,14 +125,16 @@ def add_movies():   # This function is used for adding new movie
     return new_movie
 
 
-def word_input(choice):   # This function is used for collecting user unput and error checking
+def word_input(choice):
+    # This function is used for collecting user nput and error checking
     input_string = input(choice)
     while len(input_string) == 0:   # Using the while loop to check if the user input blank
         print("Input can not be blank")   # Display the error message
         input_string = input(choice)
     return input_string.title()
 
-def count_number_year(choice):   # This function is used for checking the new movie year while user entering year
+def count_number_year(choice):
+    # This function is used for checking the new movie year while user entering year
     valid = False   # Make the variable as False
     while not valid:
         try:
@@ -132,12 +142,12 @@ def count_number_year(choice):   # This function is used for checking the new mo
             if input_number < 0:
                 print("Number must be >= 0")   # Remind the user to enter the valid number
             else:
-                return input_number   # Ask for the user input to rewrite the unput_number
+                return input_number   # Ask for the user input to rewrite the input_number
         except ValueError:   # Except the error
             print("Invalid input；enter a valid number")
 
 
-def save_to_file(all_movies):   # This function is used to write the movie list to the csv file
+def save_to_file(all_movies):   i# This function is used to write the movie list to the csv file
     final_save = open("movies.csv", 'w')
     for i in range(len(all_movies)):   # Using the for loop and declare variable
         if i != 0:
