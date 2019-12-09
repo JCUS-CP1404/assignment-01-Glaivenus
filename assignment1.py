@@ -51,10 +51,10 @@ def list_movies(all_movies):
     for i in range(len(all_movies)):   # Using the for loop with constant i
         if all_movies[i][3] == "w":
             count += 1   # If the movie is watched, count + 1
-            symbol = "*"   # Add * symbol beside the complete movie list
+            symbol = " "
             print(" ", str(i) + ".", symbol, "", end="")
         else:
-            symbol = " "
+            symbol = "*"   # Add * symbol beside the watched movies list
             print(" ", str(i) + ".", symbol, "", end="")
         for k in range(len(all_movies[i]) - 2):   # Using the for loop to add the dash before the director
             if k == 1:
@@ -63,7 +63,7 @@ def list_movies(all_movies):
                 dash = ""   # Else add the blank
             print(dash, "{:30}".format(all_movies[i][k]), end=" ")
         print("({:4})".format(all_movies[i][-2]))
-    print(len(all_movies) - count, "movies watched,", count, "movies not watched")
+    print(len(all_movies) - count, "movies watched,", count, "movies watched,""movies not watched")
 
 
 def led_movies(all_movies):
@@ -72,9 +72,9 @@ def led_movies(all_movies):
     for i in range(len(all_movies)):   # Using the for loop with constant i
         if all_movies[i][3] == "w":
             count += 1   # If the movie is watched, count + 1
-            symbol = "*"   # Add * symbol beside the watched movies list
-        else:
             symbol = " "
+        else:
+            symbol = "*"  # Add * symbol beside the watched movies list
         print(" ", str(i) + ".", symbol, "", end="")
         for k in range(len(all_movies[i]) - 2):   # Using the for loop to add the dash before the director
             if k == 1:
@@ -84,7 +84,7 @@ def led_movies(all_movies):
             print(dash, "{:30}".format(all_movies[i][k]), end=" ")   # Printing format
         print("({:4})".format(all_movies[i][-2]))
     if count == 0:
-        print("No more movies to watch! Please kindly enter 2 and Q to Quit")
+        print("No more movies to watch! Please kindly enter Q to Quit")
 
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
     movie_number = count_number("Enter the number of movie that you want to watch\n>>> ")
