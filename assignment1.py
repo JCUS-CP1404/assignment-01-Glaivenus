@@ -49,19 +49,20 @@ def list_movies(all_movies):
     # This function is used to display the movies list
     count = 0
     for i in range(len(all_movies)):   # Using the for loop with constant i
-        if all_movies[i][3] == "y":
+        if all_movies[i][3] == "w":
             count += 1   # If the movie is watched, count + 1
             symbol = "*"   # Add * symbol beside the complete movie list
+            print(" ", str(i) + ".", symbol, "", end="")
         else:
             symbol = " "
-        print(" ", str(i) + ".", symbol, "", end="")
+            print(" ", str(i) + ".", symbol, "", end="")
         for k in range(len(all_movies[i]) - 2):   # Using the for loop to add the dash before the director
             if k == 1:
                 dash = "-"   # If there is a director, add the dash
             else:
                 dash = ""   # Else add the blank
             print(dash, "{:30}".format(all_movies[i][k]), end=" ")
-        print("({:4})",format(all_movies[i][-2]))
+        print("({:4})".format(all_movies[i][-2]))
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
 
 
@@ -69,7 +70,7 @@ def led_movies(all_movies):
     # This function is used to mark the movies as watched
     count = 0
     for i in range(len(all_movies)):   # Using the for loop with constant i
-        if all_movies[i][3] == "y":
+        if all_movies[i][3] == "w":
             count += 1   # If the movie is watched, count + 1
             symbol = "*"   # Add * symbol beside the watched movies list
         else:
@@ -88,11 +89,11 @@ def led_movies(all_movies):
     print(len(all_movies) - count, "movies watched,", count, "movies not watched")
     movie_number = count_number("Enter the number of movie that you want to watch\n>>> ")
     # Asking which number of movie that user want to watch
-    if all_movies[movie_number][3] == "n":
-        # If there is "n" in forth position in csv file, it show the duplicate message
+    if all_movies[movie_number][3] == "u":
+        # If there is "u" in forth position in csv file, it show the duplicate message
         print("You have already watched", all_movies[movie_number][0])
     else:
-        all_movies[movie_number][3] = "n"
+        all_movies[movie_number][3] = "u"
         print(all_movies[movie_number][0], "by", all_movies[movie_number][1], "watched")   # Print which movie has been watched
         return all_movies
 
@@ -120,7 +121,7 @@ def add_movies():
     new_movie.append(movie_title)
     new_movie.append(Director)
     new_movie.append(Year)
-    new_movie.append("y")
+    new_movie.append("w")
     print(movie_title, "by", Director, "({:4})".format(Year), "added to movie list")   # Print and show new movies details to user
     return new_movie
 
